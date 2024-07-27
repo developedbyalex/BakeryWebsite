@@ -5,22 +5,16 @@ document.addEventListener('DOMContentLoaded', function() {
     let featuredTreats = {};
 
     async function fetchFeaturedTreats() {
-        console.log('Fetching featured treats...');
         try {
             const response = await fetch('http://localhost:3000/api/featured-treats');
-            console.log('Response status:', response.status);
             const data = await response.json();
-            console.log('Fetched data:', data);
             featuredTreats = data.featuredTreats || {};
-            console.log('Featured treats:', featuredTreats);
             
             if (Object.keys(featuredTreats).length > 0) {
                 const categories = Object.keys(featuredTreats);
-                console.log('Available categories:', categories);
                 displayFeaturedTreats(categories[0]);
                 updateCategoryButtons(categories);
             } else {
-                console.log('No featured treats available');
                 featuredTreatsContainer.innerHTML = '<p>No featured treats available at the moment.</p>';
                 hideCategoryButtons();
             }
@@ -32,61 +26,52 @@ document.addEventListener('DOMContentLoaded', function() {
     }
 
     function displayFeaturedTreats(category) {
-        console.log('Displaying featured treat for category:', category);
         featuredTreatsContainer.innerHTML = '';
         const treat = featuredTreats[category];
         if (treat) {
-            console.log('Treat to display:', treat);
-            const treatElement = document.createElement('div');
-            treatElement.className = 'menu-item';
-            treatElement.innerHTML = `
-                <img src="${treat.image}" alt="${treat.name}">
-                <h3>${treat.name}</h3>
-                <p>${treat.description}</p>
-                <div class="treat-actions">
-                    <span class="price">$${treat.price.toFixed(2)}</span>
-                    <button class="wishlist-btn" data-id="${treat._id}">
-                        <i class="fa-regular fa-heart"></i>
-                    </button>
-                    <button class="add-to-cart-btn" data-id="${treat._id}">Add to Cart</button>
-                </div>
-            `;
+            const treatElement = createTreatElement(treat);
             featuredTreatsContainer.appendChild(treatElement);
         } else {
-            console.log('No treat found for category:', category);
             featuredTreatsContainer.innerHTML = '<p>No featured treat available for this category.</p>';
         }
         updateWishlistButtonStates();
     }
 
+    function createTreatElement(treat) {
+        const treatElement = document.createElement('div');
+        treatElement.className = 'menu-item';
+        treatElement.innerHTML = `
+            <img src="${treat.image}" alt="${treat.name}">
+            <h3>${treat.name}</h3>
+            <p>${treat.description}</p>
+            <div class="treat-actions">
+                <span class="price">$${treat.price.toFixed(2)}</span>
+                <button class="wishlist-btn" data-id="${treat._id}">
+                    <i class="fa-regular fa-heart"></i>
+                </button>
+                <button class="add-to-cart-btn" data-id="${treat._id}">Add to Cart</button>
+            </div>
+        `;
+        return treatElement;
+    }
+
     function updateCategoryButtons(categories) {
-        console.log('Updating category buttons for categories:', categories);
         categoryButtons.forEach(button => {
             const category = button.dataset.category;
-            if (categories.includes(category)) {
-                button.style.display = 'block';
-            } else {
-                button.style.display = 'none';
-            }
+            button.style.display = categories.includes(category) ? 'block' : 'none';
         });
         
-        // Set the first category as active
         if (categories.length > 0) {
             categoryButtons.forEach(btn => btn.classList.remove('active'));
             const firstActiveButton = document.querySelector(`[data-category="${categories[0]}"]`);
             if (firstActiveButton) {
                 firstActiveButton.classList.add('active');
-                console.log('Set active category:', categories[0]);
-            } else {
-                console.log('No button found for category:', categories[0]);
             }
         }
     }
 
     function hideCategoryButtons() {
-        categoryButtons.forEach(button => {
-            button.style.display = 'none';
-        });
+        categoryButtons.forEach(button => button.style.display = 'none');
     }
 
     function updateWishlistButtonStates() {
@@ -95,20 +80,15 @@ document.addEventListener('DOMContentLoaded', function() {
         
         wishlistButtons.forEach(button => {
             const treatId = button.getAttribute('data-id');
-            if (wishlist.some(item => item._id === treatId)) {
-                button.classList.add('active');
-                button.innerHTML = '<i class="fa-solid fa-heart"></i>';
-            } else {
-                button.classList.remove('active');
-                button.innerHTML = '<i class="fa-regular fa-heart"></i>';
-            }
+            button.classList.toggle('active', wishlist.some(item => item._id === treatId));
+            button.innerHTML = wishlist.some(item => item._id === treatId) ? 
+                '<i class="fa-solid fa-heart"></i>' : 
+                '<i class="fa-regular fa-heart"></i>';
         });
     }
 
     function toggleWishlist(treatId) {
-        const category = Object.keys(featuredTreats).find(cat => 
-            featuredTreats[cat]._id === treatId
-        );
+        const category = Object.keys(featuredTreats).find(cat => featuredTreats[cat]._id === treatId);
         const treat = featuredTreats[category];
         let wishlist = JSON.parse(localStorage.getItem('wishlist')) || [];
         
@@ -127,9 +107,7 @@ document.addEventListener('DOMContentLoaded', function() {
     }
 
     function addToCart(treatId) {
-        const category = Object.keys(featuredTreats).find(cat => 
-            featuredTreats[cat]._id === treatId
-        );
+        const category = Object.keys(featuredTreats).find(cat => featuredTreats[cat]._id === treatId);
         const treat = featuredTreats[category];
         let cart = JSON.parse(localStorage.getItem('cart')) || [];
         
@@ -167,23 +145,5 @@ document.addEventListener('DOMContentLoaded', function() {
         }
     });
 
-
-    console.log('Setting up event listeners');
-    categoryButtons.forEach(button => {
-        button.addEventListener('click', function() {
-            const category = this.dataset.category;
-            console.log('Category button clicked:', category);
-            if (featuredTreats[category]) {
-                categoryButtons.forEach(btn => btn.classList.remove('active'));
-                this.classList.add('active');
-                displayFeaturedTreats(category);
-            } else {
-                console.log('No featured treat for category:', category);
-            }
-        });
-    });
-
-    
-    // Fetch and display featured treats
     fetchFeaturedTreats();
 });

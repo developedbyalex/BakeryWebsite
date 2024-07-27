@@ -166,13 +166,6 @@
     overflow: hidden;
 }
 
-.order-item {
-    background-color: #f9f9f9;
-    border-radius: 5px;
-    margin-bottom: 1rem;
-    overflow: hidden;
-}
-
 .order-summary {
     padding: 1rem;
 }
@@ -241,55 +234,10 @@
     background-color: #f0f0f0;
 }
 
-.order-details {
-    display: none;
-    padding: 1rem;
-    background-color: #fff;
-    border-top: 1px solid #eee;
-}
-
-.order-item.expanded .order-details {
-    display: block;
-}
-
 .order-actions {
     display: flex;
     justify-content: space-between;
     margin-top: 1rem;
-}
-
-.complete-btn, .remove-btn {
-    padding: 0.5rem 1rem;
-    border: none;
-    border-radius: 5px;
-    cursor: pointer;
-    transition: opacity 0.3s ease;
-}
-
-.complete-btn {
-    background-color: #4CAF50;
-    color: white;
-}
-
-.remove-btn {
-    background-color: #f44336;
-    color: white;
-}
-
-.complete-btn:disabled {
-    opacity: 0.5;
-    cursor: not-allowed;
-}
-
-@media (max-width: 768px) {
-    .order-actions {
-        flex-direction: column;
-    }
-
-    .complete-btn, .remove-btn {
-        width: 100%;
-        margin-bottom: 0.5rem;
-    }
 }
 
 /* Admin Dashboard Styles */
