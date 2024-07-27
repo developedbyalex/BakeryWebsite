@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Admin Dashboard - Sweet Delights Bakery</title>
+    <link rel="stylesheet" href="./css/styles.css">
+    <link rel="stylesheet" href="./css/admin-dashboard.css">
+</head>
+<body>
+    <header>
+        <nav class="navbar">
+            <div class="logo">Sweet Delights Bakery</div>
+            <ul class="nav-links">
+                <li><a href="./index.html">Home</a></li>
+                <li><a href="./products.html">Our Products</a></li>
+                <li><a href="./wishlist.html">Wishlist</a></li>
+                <li><a href="cart.html" class="active">Cart</a></li>
+            </ul>
+            <div class="burger">
+                <div class="line1"></div>
+                <div class="line2"></div>
+                <div class="line3"></div>
+            </div>
+        </nav>
+    </header>
+
+    <main class="admin-dashboard">
+        <h1>Admin Dashboard</h1>
+        
+        <div class="dashboard-cards">
+            <section id="product-management" class="dashboard-card">
+                <div class="card-header">
+                    <h2>Product Management</h2>
+                    <button id="add-product-btn" class="action-btn">Add New Product</button>
+                </div>
+                <div id="product-list" class="list-container"></div>
+            </section>
+
+            <section id="order-management" class="dashboard-card">
+                <h2>Order Management</h2>
+                <div id="order-list" class="list-container"></div>
+            </section>
+        </div>
+    </main>
+
+    <!-- Product Modal -->
+    <div id="product-modal" class="modal">
+        <div class="modal-content">
+            <span class="close">&times;</span>
+            <h2>Add/Edit Product</h2>
+            <form id="product-form">
+                <input type="hidden" id="product-id">
+                <input type="text" id="product-name" placeholder="Product Name" required>
+                <textarea id="product-description" placeholder="Product Description" required></textarea>
+                <input type="number" id="product-price" placeholder="Price" step="0.01" required>
+                <select id="product-category" required>
+                    <option value="">Select Category</option>
+                    <option value="pastries">Pastries</option>
+                    <option value="cakes">Cakes</option>
+                    <option value="breads">Breads</option>
+                </select>
+                <input type="text" id="product-image" placeholder="Image URL" required>
+                <button type="submit" class="action-btn">Save Product</button>
+            </form>
+        </div>
+    </div>
+
+    <footer>
+        <!-- ... (keep your existing footer code) ... -->
+    </footer>
+
+    <script src="./js/admin-dashboard.js"></script>
+</body>
+</html>

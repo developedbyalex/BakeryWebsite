@@ -1,0 +1,95 @@
+<!DOCTYPE html>
+<html lang="en">
+   <head>
+      <meta charset="UTF-8">
+      <meta name="viewport" content="width=device-width, initial-scale=1.0">
+      <title>Sweet Delights Bakery</title>
+      <link rel="stylesheet" href="./css/styles.css">
+      <script src="./js/script.js" defer></script>
+      <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+      <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.1.1/css/all.min.css">
+      <link rel="stylesheet" href="https://unpkg.com/aos@next/dist/aos.css" />
+      <script src="https://unpkg.com/aos@next/dist/aos.js"></script>
+   </head>
+   <body>
+      <header>
+         <nav class="navbar">
+            <div class="logo">Sweet Delights Bakery</div>
+            <ul class="nav-links">
+               <li><a href="./index.html">Home</a></li>
+               <li><a href="./products.html">Our Products</a></li>
+               <li><a href="./wishlist.html">Wishlist</a></li>
+               <li><a href="cart.html" class="active">Cart</a></li>
+           </ul>
+            <div class="burger">
+               <div class="line1"></div>
+               <div class="line2"></div>
+               <div class="line3"></div>
+            </div>
+         </nav>
+      </header>
+      
+      <main role="main">
+         <section id="home" class="section hero">
+            <h1>Sweet Delights Bakery</h1>
+            <p>Indulge in heavenly baked goods made with love</p>
+            <a href="#menu" class="cta-button">View Our Treats</a>
+         </section>
+    
+         <div id="menu" class="section menu">
+            <h2>Featured Treat</h2>
+            <div class="menu-categories">
+               <button class="category-btn" data-category="pastries">Pastries</button>
+               <button class="category-btn" data-category="cakes">Cakes</button>
+               <button class="category-btn" data-category="breads">Breads</button>
+           </div>
+            <div id="featured-treats" class="menu-grid">
+                <!-- Featured treats will be dynamically added here -->
+            </div>
+        </div>
+    
+         <section id="about" class="section about">
+            <h2>About Us</h2>
+            <p>Welcome to Sweet Delights Bakery, a haven for bread lovers and sweet-toothed enthusiasts since 1995. Our passion for baking has made us a beloved destination in the heart of Yorkshire. Founded by the Thompson family, our bakery began as a small operation selling homemade bread and pastries. Over nearly three decades, we've perfected our craft, using only the finest locally-sourced ingredients to create mouth-watering treats that bring joy to our community every day.</p>
+         </section>
+    
+         <section id="contact" class="section contact">
+            <h2>Contact Us</h2>
+            <form>
+               <input type="text" placeholder="Name" required>
+               <input type="email" placeholder="Email" required>
+               <textarea placeholder="Message" required></textarea>
+               <button type="submit">Send Message</button>
+            </form>
+         </section>
+      </main>
+    
+      <footer>
+         <div class="footer-content">
+            <div class="footer-section">
+               <h3>Location</h3>
+               <p>14 Millstone Lane<br>Harrogate, North Yorkshire<br>HG1 2TZ<br>United Kingdom</p>
+            </div>
+            <div class="footer-section">
+               <h3>Hours</h3>
+               <p>Mon-Fri: 7am-7pm<br>Sat-Sun: 8am-6pm</p>
+            </div>
+            <div class="footer-section">
+               <h3>Follow Us</h3>
+               <div class="social-icons">
+                  <a href="#" class="social-icon">FB</a>
+                  <a href="#" class="social-icon">IG</a>
+                  <a href="#" class="social-icon">TW</a>
+               </div>
+            </div>
+         </div>
+         <div class="copyright">
+            © 2024 Sweet Delights Bakery. All rights reserved.
+         </div>
+      </footer>
+
+      <script src="./js/script.js"></script>
+      <script src="./js/featured-treats.js"></script>
+      <script src="./js/notifications.js"></script>
+   </body>
+</html>

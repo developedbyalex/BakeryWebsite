@@ -1,0 +1,96 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Your Cart - Sweet Delights Bakery</title>
+    <link rel="stylesheet" href="./css/styles.css">
+    <link rel="stylesheet" href="./css/cart.css">
+    <link rel="stylesheet" href="./css/notifications.css">
+    <script src="./js/notifications.js" defer></script>
+    <script src="./js/cart.js" defer></script>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.1.1/css/all.min.css">
+</head>
+<body>
+    <header>
+        <nav class="navbar">
+            <div class="logo">Sweet Delights Bakery</div>
+            <ul class="nav-links">
+                <li><a href="./index.html">Home</a></li>
+                <li><a href="./products.html">Our Products</a></li>
+                <li><a href="cart.html" class="active">Cart</a></li>
+            </ul>
+            <div class="burger">
+                <div class="line1"></div>
+                <div class="line2"></div>
+                <div class="line3"></div>
+            </div>
+        </nav>
+    </header>
+
+    <main class="cart-page">
+        <h1>Your Cart</h1>
+        
+        <div class="cart-container">
+            <div class="cart-items">
+                <!-- Cart items will be dynamically added here -->
+            </div>
+            
+            <div class="cart-summary">
+
+                <h2>Order Summary</h2>
+                <div class="summary-item">
+                    <span>Subtotal</span>
+                    <span id="subtotal">$0.00</span>
+                </div>
+                <div class="summary-item">
+                    <span>Shipping</span>
+                    <span id="shipping">$5.00</span>
+                </div>
+                <div class="discount-section">
+                    <h3>Apply Discount</h3>
+                    <div class="discount-input">
+                        <input type="text" id="discount-code" placeholder="Enter discount code">
+                        <button id="apply-discount">Apply</button>
+                    </div>
+                    <p id="discount-message"></p>
+                </div>
+                <div id="discount-line" class="summary-item discount" style="display: none;">
+                    <span>Discount</span>
+                    <span id="discount-amount">-$0.00</span>
+                </div>
+                <div class="summary-item total">
+                    <span>Total</span>
+                    <span id="total">$0.00</span>
+                </div>
+                <a href="checkout.html" class="checkout-btn">Proceed to Checkout</a>
+            </div>
+        </div>
+    </main>
+
+    <footer>
+        <div class="footer-content">
+            <div class="footer-section">
+                <h3>Location</h3>
+                <p>14 Millstone Lane<br>Harrogate, North Yorkshire<br>HG1 2TZ<br>United Kingdom</p>
+            </div>
+            <div class="footer-section">
+                <h3>Hours</h3>
+                <p>Mon-Fri: 7am-7pm<br>Sat-Sun: 8am-6pm</p>
+            </div>
+            <div class="footer-section">
+                <h3>Follow Us</h3>
+                <div class="social-icons">
+                    <a href="#" class="social-icon">FB</a>
+                    <a href="#" class="social-icon">IG</a>
+                    <a href="#" class="social-icon">TW</a>
+                </div>
+            </div>
+        </div>
+        <div class="copyright">
+            © 2024 Sweet Delights Bakery. All rights reserved.
+        </div>
+    </footer>
+</body>
+</html>
